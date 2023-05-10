@@ -12,7 +12,7 @@
         android:theme="@style/Theme.BusqueLasParejas"
         tools:targetApi="31">
         <activity
-            android:name=".PantallaSplash"
+            android:name=".tabla_posiciones"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,9 +21,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity_emparejado"
+            android:name=".PantallaSplash"
             android:exported="true">
+
         </activity>
+        <activity
+            android:name=".activity_emparejado"
+            android:exported="true"></activity>
         <!--
  <meta-data
              android:name="com.google.android.actions"
