@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">busqueLasParejas</string>
+    <string name="app_name">Busque Las Parejas</string>
     <string name="title_activity_emparejado">activity_emparejado</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

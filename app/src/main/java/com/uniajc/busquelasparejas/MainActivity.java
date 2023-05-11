@@ -32,9 +32,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //codigoUsuario = getIntent().getIntExtra("codigoUsuario", 0);
         codigoUsuario = getIntent().getStringExtra("usuario");
-
+        System.out.println("Valor del codigoUsuario: " + codigoUsuario);
 
         // Se enlaza la variable del modelo con el componente de la vista
         cuadro1 = findViewById(R.id.imv1);
@@ -49,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Almacenar el valor en la variable mostrarUsuario
         mostrarUsuario = findViewById(R.id.txvUsuario);
-        mostrarUsuario.setText( String.valueOf(codigoUsuario));
+        mostrarUsuario.setText(codigoUsuario);
+
        //setText("By: "+ String.valueOf(usuario) + " - © UNIAJC");
 
         // Se inicializan el nombre de las imágenes q mostrará cada cuadro
@@ -198,6 +198,16 @@ public class MainActivity extends AppCompatActivity {
 
         // Se cierra la conexión a la base de datos
         sqdBaseDatos.close();
+    }
+
+    public void verPuntajes(View V){
+        Intent intent = new Intent(this, tabla_posiciones.class);
+        startActivity(intent);
+    }
+
+    public void salir(View V){
+        Intent intent = new Intent(this, activity_emparejado.class);
+        startActivity(intent);
     }
 
 }

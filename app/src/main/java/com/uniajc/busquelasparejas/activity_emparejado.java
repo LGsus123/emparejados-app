@@ -87,7 +87,8 @@ public class activity_emparejado extends AppCompatActivity {
         sqdBaseDatos.close();
 
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("codigoUsuario", codigoTexto.toString());
+        //intent.putExtra("codigoUsuario", codigoTexto.toString());
+        intent.putExtra("usuario", codigoTexto);
         startActivity(intent);
     }
 
