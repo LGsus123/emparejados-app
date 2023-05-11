@@ -68,7 +68,23 @@ public class TableDynamic {
             }
             tableLayout.addView(tableRow);
         }
-    } // si
+    }
+
+    private void createDataTable2() {
+        String info;
+        for (indexR = 0; indexR < data.size(); indexR++) {
+            newRow();
+            String[] row = data.get(indexR);
+            for (indexC = 0; indexC < header.length; indexC++) {
+                newCell();
+                info = (indexC < row.length) ? row[indexC] : "";
+                txtCell.setText(info);
+                tableRow.addView(txtCell, newTableRowParams());
+            }
+            tableLayout.addView(tableRow);
+        }
+    }
+
 
     public void addItems(String[]item){
         String info;
