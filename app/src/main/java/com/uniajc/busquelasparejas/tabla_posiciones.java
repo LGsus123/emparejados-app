@@ -2,6 +2,7 @@ package com.uniajc.busquelasparejas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -23,18 +24,19 @@ public class tabla_posiciones extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabla_posiciones);
         tableLayout=(TableLayout)findViewById(R.id.table);
-        txtCodigo=(EditText) findViewById(R.id.txtCodigo);
-        txtNombre=(EditText) findViewById(R.id.txtNombre);
-        txtPuntaje=(EditText) findViewById(R.id.txtPuntaje);
+        //txtCodigo=(EditText) findViewById(R.id.txtCodigo);
+        //txtNombre=(EditText) findViewById(R.id.txtNombre);
+        //txtPuntaje=(EditText) findViewById(R.id.txtPuntaje);
 
         tableDynamic = new TableDynamic(tableLayout, getApplicationContext());
         tableDynamic.addHeader(header);
         tableDynamic.addData(getClients());
-        tableDynamic.backgroundHeader(Color.BLUE);
-        tableDynamic.backgroundData(Color.RED, Color.YELLOW);
-        tableDynamic.lineColor(Color.BLACK);
-        tableDynamic.textColorData(Color.WHITE);
-        tableDynamic.textColorHeader(Color.MAGENTA);
+        tableDynamic.backgroundHeader(Color.rgb(0,51,102));   // Azul más tenue
+        tableDynamic.backgroundData(Color.rgb(255, 255, 255), Color.rgb(224, 224, 224));   // Rojo y amarillo más tenues
+        tableDynamic.lineColor(Color.rgb(128, 128, 128));   // Negro más tenue
+        tableDynamic.textColorData(Color.rgb(0, 0, 51));   // Blanco más tenue
+        tableDynamic.textColorHeader(Color.rgb(255, 255, 255));   // Magenta más tenue
+
     }
 
     public void save(View view){
@@ -48,5 +50,10 @@ public class tabla_posiciones extends AppCompatActivity {
         rows.add(new String[]{"3", "Dario", "12"});
         rows.add(new String[]{"4", "Maria", "22"});
         return rows;
+    }
+
+    public void volver(View V){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
