@@ -20,6 +20,7 @@ public class tabla_posiciones extends AppCompatActivity {
     private String[]header = {"Cód", "Nombre",  "Apellido"};
     private ArrayList<String[]> rows = new ArrayList<>();
     private TableDynamic tableDynamic;
+    private String codigoUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,8 @@ public class tabla_posiciones extends AppCompatActivity {
         tableDynamic.lineColor(Color.rgb(128, 128, 128));
         tableDynamic.textColorData(Color.rgb(0, 0, 51));
         tableDynamic.textColorHeader(Color.rgb(255, 255, 255));
+
+        codigoUsuario = getIntent().getStringExtra("usuario");
 
     }
 
@@ -59,7 +62,8 @@ public class tabla_posiciones extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         // Realizar la consulta a la tabla "usuario" y obtener los registros
-        Cursor cursor = db.rawQuery("SELECT * FROM usuario", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM usuario LIMIT 4", null);
+
         if (cursor.moveToFirst()) {
             do {
                 String codigo = cursor.getString(cursor.getColumnIndex("codigo"));
@@ -98,6 +102,7 @@ public class tabla_posiciones extends AppCompatActivity {
 
     public void volver(View V){
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("usuario", codigoUsuario);
         startActivity(intent);
     }
 }

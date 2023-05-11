@@ -58,7 +58,7 @@ public class activity_emparejado extends AppCompatActivity {
 
         Intent intent = new Intent(activity_emparejado.this, MainActivity.class);
         //intent.putExtra("codigo", usrQuemadoNombre);
-        intent.putExtra("codigoUsuario", codigoTexto.toString());
+        intent.putExtra("usuario", codigoTexto);
         startActivity(intent);
     }
 

@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         codigoUsuario = getIntent().getStringExtra("usuario");
-        System.out.println("Valor del codigoUsuario: " + codigoUsuario);
 
         // Se enlaza la variable del modelo con el componente de la vista
         cuadro1 = findViewById(R.id.imv1);
@@ -207,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void salir(View V){
         Intent intent = new Intent(this, activity_emparejado.class);
+        intent.putExtra("usuario", codigoUsuario);
         startActivity(intent);
     }
 
