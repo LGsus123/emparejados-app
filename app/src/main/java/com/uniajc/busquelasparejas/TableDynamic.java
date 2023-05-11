@@ -55,22 +55,8 @@ public class TableDynamic {
     }
 
 
-    private void createDataTable(){
-        String info;
-        for(indexR = 1; indexR <= header.length; indexR++) {
-            newRow();
-            for(indexC = 0; indexC <= header.length; indexC++){
-                newCell();
-                String[] row = data.get(indexR -1);
-                info = (indexC < row.length)?row[indexC] : "";
-                txtCell.setText(info);
-                tableRow.addView(txtCell, newTableRowParams());
-            }
-            tableLayout.addView(tableRow);
-        }
-    }
 
-    private void createDataTable2() {
+    private void createDataTable() {
         String info;
         for (indexR = 0; indexR < data.size(); indexR++) {
             newRow();
@@ -109,7 +95,7 @@ public class TableDynamic {
         }
     }
 
-    public void backgroundData(int firstColor, int secondColor){
+    public void backgroundDatax(int firstColor, int secondColor){
         for(indexR = 1; indexR <= header.length; indexR++) {
             multiColor = !multiColor;
             for(indexC = 0; indexC <= header.length; indexC++){
@@ -120,20 +106,36 @@ public class TableDynamic {
         this.firstColor = firstColor;
         this.secondColor = secondColor;
     }
+
+    public void backgroundData(int firstColor, int secondColor){
+        for(indexR = 1; indexR <= data.size(); indexR++) {
+            multiColor = !multiColor;
+            String[] row = data.get(indexR - 1);
+            for(indexC = 0; indexC < row.length; indexC++){
+                txtCell = getCell(indexR, indexC);
+                txtCell.setBackgroundColor((multiColor) ? firstColor : secondColor);
+            }
+        }
+        this.firstColor = firstColor;
+        this.secondColor = secondColor;
+    }
+
     public void lineColor(int color){
         indexR = 0;
         while (indexR <data.size())
             getRow(indexR++).setBackgroundColor(color);
     }
 
-    public void textColorData(int color){
-        for(indexR = 1; indexR <= header.length; indexR++) {
-            for(indexC = 0; indexC <= header.length; indexC++){
+    public void textColorData(int color) {
+        for (indexR = 1; indexR < data.size(); indexR++) {
+            String[] row = data.get(indexR);
+            for (indexC = 0; indexC < row.length; indexC++) {
                 getCell(indexR, indexC).setTextColor(color);
                 this.textColor = color;
             }
         }
     }
+
 
     public void textColorHeader(int color){
         indexC = 0;

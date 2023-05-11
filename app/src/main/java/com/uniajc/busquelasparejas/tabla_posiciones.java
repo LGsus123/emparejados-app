@@ -25,20 +25,16 @@ public class tabla_posiciones extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabla_posiciones);
-        tableLayout=(TableLayout)findViewById(R.id.table);
-        //txtCodigo=(EditText) findViewById(R.id.txtCodigo);
-        //txtNombre=(EditText) findViewById(R.id.txtNombre);
-        //txtPuntaje=(EditText) findViewById(R.id.txtPuntaje);
-        getPuntajes();
+        tableLayout = (TableLayout) findViewById(R.id.table);
 
         tableDynamic = new TableDynamic(tableLayout, getApplicationContext());
         tableDynamic.addHeader(header);
-        tableDynamic.addData(getClients());
-        tableDynamic.backgroundHeader(Color.rgb(0,51,102));   // Azul más tenue
-        tableDynamic.backgroundData(Color.rgb(255, 255, 255), Color.rgb(224, 224, 224));   // Rojo y amarillo más tenues
-        tableDynamic.lineColor(Color.rgb(128, 128, 128));   // Negro más tenue
-        tableDynamic.textColorData(Color.rgb(0, 0, 51));   // Blanco más tenue
-        tableDynamic.textColorHeader(Color.rgb(255, 255, 255));   // Magenta más tenue
+        tableDynamic.addData(getPuntajes());
+        tableDynamic.backgroundHeader(Color.rgb(0, 51, 102));
+        tableDynamic.backgroundData(Color.rgb(255, 255, 255), Color.rgb(224, 224, 224));
+        tableDynamic.lineColor(Color.rgb(128, 128, 128));
+        tableDynamic.textColorData(Color.rgb(0, 0, 51));
+        tableDynamic.textColorHeader(Color.rgb(255, 255, 255));
 
     }
 
@@ -77,7 +73,8 @@ public class tabla_posiciones extends AppCompatActivity {
         // Cerrar el cursor y la base de datos
         cursor.close();
         db.close();
-        mostrarPuntajes(puntajes);
+
+        mostrarPuntajesEnTabla(puntajes);
         return puntajes;
     }
 
@@ -90,13 +87,11 @@ public class tabla_posiciones extends AppCompatActivity {
         }
     }
 
-    private void mostrarTablaPosiciones() {
-       // TableLayout tableLayout = findViewById(R.id.tableLayout); // Reemplaza "R.id.tableLayout" con el ID correcto de tu TableLayout
+    private void mostrarPuntajesEnTabla(ArrayList<String[]> puntajes) {
         TableDynamic tableDynamic = new TableDynamic(tableLayout, this);
         String[] header = {"Código", "Nombre", "Puntaje"};
         tableDynamic.addHeader(header);
 
-        ArrayList<String[]> puntajes = getPuntajes();
         tableDynamic.addData(puntajes);
     }
 
